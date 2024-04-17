@@ -51,6 +51,24 @@ helm install "${INSTALLATION_NAME}" \
     oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
 ```
 
+## ランナー スケール セットの構成 (Docker-in-Dockerモード)
+
+[ドキュメント](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/deploying-runner-scale-sets-with-actions-runner-controller#using-docker-in-docker-mode)
+
+```bash
+INSTALLATION_NAME="arc-runner-set"
+NAMESPACE="arc-systems"
+GITHUB_CONFIG_URL="https://github.com/<your_enterprise/org/repo>"
+GITHUB_PAT="<PAT>"
+helm install "${INSTALLATION_NAME}" \
+    --namespace "${NAMESPACE}" \
+    --create-namespace \
+    --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
+    --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+    -f gha-runner-scale-set/values.yaml \
+    oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+```
+
 ## 参考資料
 
 - https://docs.github.com/ja/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/about-actions-runner-controller

@@ -69,6 +69,42 @@ helm install "${INSTALLATION_NAME}" \
     oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
 ```
 
+## カスタムランナーイメージ
+
+[ドキュメント](https://docs.github.com/ja/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/deploying-runner-scale-sets-with-actions-runner-controller#configuring-the-runner-image)
+
+```bash
+INSTALLATION_NAME="arc-runner-custom-image-set"
+NAMESPACE="arc-systems"
+GITHUB_CONFIG_URL="https://github.com/<your_enterprise/org/repo>"
+GITHUB_PAT="<PAT>"
+helm install "${INSTALLATION_NAME}" \
+    --namespace "${NAMESPACE}" \
+    --create-namespace \
+    --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
+    --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+    -f custom-image.yaml \
+    oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+```
+
+## カスタムランナーイメージ (Docker-in-Dockerモード)
+
+[ドキュメント](https://docs.github.com/ja/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/deploying-runner-scale-sets-with-actions-runner-controller#configuring-the-runner-image)
+
+```bash
+INSTALLATION_NAME="arc-runner-custom-image-with-dind-set"
+NAMESPACE="arc-systems"
+GITHUB_CONFIG_URL="https://github.com/<your_enterprise/org/repo>"
+GITHUB_PAT="<PAT>"
+helm install "${INSTALLATION_NAME}" \
+    --namespace "${NAMESPACE}" \
+    --create-namespace \
+    --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
+    --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+    -f custom-image-with-dind.yaml \
+    oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+```
+
 ## 参考資料
 
 - https://docs.github.com/ja/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/about-actions-runner-controller

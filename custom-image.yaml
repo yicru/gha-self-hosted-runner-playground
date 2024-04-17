@@ -1,0 +1,12 @@
+githubConfigUrl: ""
+githubConfigSecret:
+  github_token: ""
+
+template:
+  spec:
+    imagePullSecrets:
+      - name: regcred
+    containers:
+      - name: runner
+        image: ghcr.io/yicru/gha-self-hosted-runner-playground:latest
+        command: ["/home/runner/run.sh"]

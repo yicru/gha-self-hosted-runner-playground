@@ -1,0 +1,11 @@
+name: Actions Runner Controller Custom Image With DIND Demo
+on:
+  workflow_dispatch:
+
+jobs:
+  Explore-GitHub-Actions:
+    # You need to use the INSTALLATION_NAME from the previous step
+    runs-on: arc-runner-custom-image-with-dind-set
+    steps:
+      - run: banner "hello"
+      - run: docker run hello-world

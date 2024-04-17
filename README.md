@@ -40,7 +40,7 @@ https://github.com/settings/tokens/new から下記スコープで PAT を作成
 
 ```bash
 INSTALLATION_NAME="arc-runner-set"
-NAMESPACE="arc-runners"
+NAMESPACE="arc-systems"
 GITHUB_CONFIG_URL="https://github.com/<your_enterprise/org/repo>"
 GITHUB_PAT="<PAT>"
 helm install "${INSTALLATION_NAME}" \
